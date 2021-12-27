@@ -1,6 +1,6 @@
-import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
-import Word from '../views/Word.vue'
-import Home from '../views/Home.vue'
+import { createRouter, createWebHistory } from 'vue-router'
+import Word from '@views/Word.vue'
+import Home from '@views/Home.vue'
 
 const routes = [
   {
