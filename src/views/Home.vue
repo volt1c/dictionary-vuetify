@@ -1,6 +1,8 @@
 <template>
-  <input type="text" v-model="word" />
-  <router-link :to="word">Search</router-link>
+  <div>
+    <v-text-field v-model="word" />
+    <router-link :to="word"><v-btn block> Search </v-btn></router-link>
+  </div>
 </template>
 
 <script lang="ts">
