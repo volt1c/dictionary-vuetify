@@ -1,15 +1,15 @@
 <template>
-  <HelloWorld />
+  <input type="text" v-model="word" />
+  <router-link :to="word">Search</router-link>
 </template>
 
 <script lang="ts">
-import HelloWorld from '../components/HelloWorld.vue'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'Home',
-
-  components: {
-    HelloWorld,
-  },
-}
+  data: () => ({
+    word: '',
+  }),
+})
 </script>
