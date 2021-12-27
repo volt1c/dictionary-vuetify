@@ -8,6 +8,11 @@ const routes = [
     name: 'Home',
     component: Home,
   },
+  {
+    path: '/:word',
+    name: 'Word',
+    component: Word,
+  },
 ]
 
 const router = createRouter({
