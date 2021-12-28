@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <v-text-field v-model="word" />
-    <router-link :to="word"><v-btn block> Search </v-btn></router-link>
-  </div>
+  <div></div>
 </template>
 
 <script lang="ts">

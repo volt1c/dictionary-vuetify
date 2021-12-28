@@ -1,11 +1,17 @@
 <template>
   <v-app id="main" :theme="theme">
-    <router-view />
+    <navbar />
+    <v-main>
+      <v-container>
+        <router-view />
+      </v-container>
+    </v-main>
   </v-app>
 </template>  
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import Navbar from './components/Navbar.vue'
 
 export default defineComponent({
   name: 'App',
@@ -20,5 +26,6 @@ export default defineComponent({
       this.theme = ref(this.isDark ? 'dark' : 'light')
     },
   },
+  components: { Navbar },
 })
 </script>
