@@ -8,10 +8,7 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@utils/*": ["src/utils/*"],
-      "@views/*": ["src/views/*"],
-      "@routes/*": ["src/routes/*"],
-      "@components/*": ["src/components/*"]
+      "@/*": ["src/*"],
     }
   },
   "include": [

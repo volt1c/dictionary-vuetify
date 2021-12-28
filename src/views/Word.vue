@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { fetchDictionary } from '@utils/dictionary'
+import { fetchDictionary } from '@/utils/dictionary'
 
 export default defineComponent({
   name: 'Word',
