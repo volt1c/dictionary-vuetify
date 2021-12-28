@@ -18,12 +18,20 @@ export default defineComponent({
   data() {
     const word = this.$route.params.word as string
     return {
-      word: word,
       dictionary: [],
     }
   },
-  async created() {
-    this.dictionary = await fetchDictionary(this.word)
+  computed: {
+    word() {
+      const word = this.$route.params.word
+      this.loadDictionary(word)
+      return word
+    },
+  },
+  methods: {
+    async loadDictionary(word: string) {
+      this.dictionary = await fetchDictionary(word)
+    },
   },
 })
 </script>
