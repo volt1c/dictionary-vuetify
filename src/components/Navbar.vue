@@ -1,7 +1,5 @@
 <template>
   <v-app-bar app>
-    <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
     <v-app-bar-title
       ><router-link to="/">Dictionary</router-link></v-app-bar-title
     >
