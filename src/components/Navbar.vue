@@ -17,8 +17,7 @@
 
     <router-link style="" :to="word">
       <v-btn class="mr-4 ml-5" color="primary" plain>
-        <v-icon left icon="mdi-handshake-outline"></v-icon>
-
+        <v-icon left role="img">mdi-magnify</v-icon>
         <span>Find</span>
       </v-btn>
     </router-link>
