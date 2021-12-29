@@ -22,6 +22,7 @@
                   :key="idx"
                 >
                   <h4>&lt;&lt; {{ definition.definition }} &gt;&gt;</h4>
+                  <p>{{ definition.example }}</p>
                   <p v-if="definition.synonyms.length !== 0">
                     <strong> synonyms: </strong>
                     <router-link
