@@ -11,20 +11,20 @@
     <v-text-field
       v-model="word"
       class="text-field-transparent"
+      @keydown.enter="search(word)"
       solo
       flat
     ></v-text-field>
 
-    <router-link style="" :to="word">
-      <v-btn class="mr-4 ml-5" color="primary" plain>
-        <v-icon left role="img">mdi-magnify</v-icon>
-        <span>Find</span>
-      </v-btn>
-    </router-link>
+    <v-btn @click="search(word)" class="mr-4 ml-5" color="primary" plain>
+      <v-icon left role="img">mdi-magnify</v-icon>
+      <span>Find</span>
+    </v-btn>
   </v-app-bar>
 </template>
 
 <script lang="ts">
+import router from '@/routes'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -32,6 +32,11 @@ export default defineComponent({
   data: () => ({
     word: '',
   }),
+  methods: {
+    search(value: string) {
+      router.push(`/${value}`)
+    },
+  },
 })
 </script>
 
