@@ -1,7 +1,13 @@
 <template>
   <div>
     <h1>{{ word }}</h1>
-    <div v-if="isWord">
+    <div v-if="isLoading">loading...</div>
+    <div v-else-if="isError">
+      <h1>{{ dictionary.title }}</h1>
+      <h4>{{ dictionary.message }}</h4>
+      <p>{{ dictionary.resolution }}</p>
+    </div>
+    <div v-else>
       <ul>
         <li v-for="(def, idx) in dictionary" :key="idx">
           <h2>
@@ -40,11 +46,6 @@
         </li>
       </ul>
     </div>
-    <div v-else>
-      <h1>{{ dictionary.title }}</h1>
-      <h4>{{ dictionary.message }}</h4>
-      <p>{{ dictionary.resolution }}</p>
-    </div>
   </div>
 </template>
 
@@ -63,10 +64,12 @@ export default defineComponent({
     const word = this.$route.params.word as string
     const data: {
       dictionary: any
-      isWord: boolean
+      isLoading: boolean
+      isError: boolean
     } = {
       dictionary: undefined,
-      isWord: true,
+      isLoading: true,
+      isError: false,
     }
     return data
   },
@@ -79,7 +82,9 @@ export default defineComponent({
   },
   methods: {
     async loadDictionary(word: string) {
+      this.isLoading = true
       this.dictionary = await fetchDictionary(word)
+      this.isLoading = false
     },
     play(url: string) {
       const audio = new Audio(url)
