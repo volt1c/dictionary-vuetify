@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>{{ word }}</h1>
     <div v-if="isLoading">loading...</div>
     <div v-else-if="isError">
-      <h1>{{ dictionary.title }}</h1>
+      <h1>{{ dictionary.title }} for ``{{ word }}``</h1>
       <h4>{{ dictionary.message }}</h4>
       <p>{{ dictionary.resolution }}</p>
     </div>
     <div v-else>
+      <h1>{{ word }}</h1>
       <ul>
         <li v-for="(def, idx) in dictionary" :key="idx">
           <h2>
@@ -56,6 +56,7 @@ import {
   Word,
   isWordArray,
   FailureMessage,
+  isFailureMessage,
 } from '@/utils/dictionary'
 
 export default defineComponent({
@@ -96,7 +97,7 @@ export default defineComponent({
   },
   watch: {
     dictionary() {
-      this.isWord = isWordArray(this.dictionary)
+      this.isError = isFailureMessage(this.dictionary)
     },
   },
 })
