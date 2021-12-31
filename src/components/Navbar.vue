@@ -6,18 +6,7 @@
 
     <v-spacer></v-spacer>
 
-    <v-text-field
-      v-model="word"
-      class="text-field-transparent"
-      @keydown.enter="search(word)"
-      solo
-      flat
-    ></v-text-field>
-
-    <v-btn @click="search(word)" class="mr-4 ml-5" color="primary" plain>
-      <v-icon left role="img">mdi-magnify</v-icon>
-      <span>Find</span>
-    </v-btn>
+    <search-text-field @search="search" />
 
     <v-divider vertical />
 
@@ -29,6 +18,7 @@
 import router from '@/routes'
 import { defineComponent } from 'vue'
 import ThemeButton from './ThemeButton.vue'
+import SearchTextField from './SearchTextField.vue'
 
 export default defineComponent({
   name: 'Navbar',
@@ -40,11 +30,12 @@ export default defineComponent({
       router.push(`/${value}`)
     },
   },
-  components: { ThemeButton },
+  components: { ThemeButton, SearchTextField },
 })
 </script>
 
 <style>
+/* todo change on official `vuetify 3` release */
 .text-field-transparent .v-field__overlay {
   background: transparent !important;
 }
