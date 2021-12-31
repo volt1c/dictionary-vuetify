@@ -18,12 +18,17 @@
       <v-icon left role="img">mdi-magnify</v-icon>
       <span>Find</span>
     </v-btn>
+
+    <v-divider vertical />
+
+    <theme-button @swap-theme="$emit('swapTheme')" />
   </v-app-bar>
 </template>
 
 <script lang="ts">
 import router from '@/routes'
 import { defineComponent } from 'vue'
+import ThemeButton from './ThemeButton.vue'
 
 export default defineComponent({
   name: 'Navbar',
@@ -35,6 +40,7 @@ export default defineComponent({
       router.push(`/${value}`)
     },
   },
+  components: { ThemeButton },
 })
 </script>
 

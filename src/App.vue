@@ -1,7 +1,7 @@
 <template>
   <v-app id="main" :theme="theme">
     <v-layout>
-      <navbar />
+      <navbar @swap-theme="swapTheme()" />
       <v-main>
         <v-container>
           <router-view />
@@ -14,18 +14,21 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import Navbar from './components/Navbar.vue'
+import ThemeButton from './components/ThemeButton.vue'
 
 export default defineComponent({
   name: 'App',
   data() {
     return {
-      theme: ref(),
+      theme: localStorage.getItem('theme'),
       isDark: true,
     }
   },
-  watch: {
-    isDark(value: boolean) {
-      this.theme = ref(this.isDark ? 'dark' : 'light')
+  methods: {
+    swapTheme() {
+      const theme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark'
+      this.theme = theme
+      localStorage.setItem('theme', theme)
     },
   },
   components: { Navbar },
