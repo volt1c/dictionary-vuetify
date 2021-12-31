@@ -11,50 +11,7 @@
       <v-divider></v-divider>
       <ul>
         <li v-for="(def, idx) in dictionary" :key="idx">
-          <h2>
-            {{ idx + 1 }}. {{ word }}
-            <span v-show="def.phonetic">[{{ def.phonetic }}]</span>
-            <span v-for="(phonetic, idx) in def.phonetics" :key="idx">
-              <button v-if="phonetic.audio" @click="play(phonetic.audio)">
-                <v-icon>mdi-volume-high</v-icon>
-              </button>
-            </span>
-          </h2>
-          <ul>
-            <li v-for="(meaning, idx) in def.meanings" :key="idx">
-              <ul>
-                <li v-for="(definition, idx) in meaning.definitions" :key="idx">
-                  <p>
-                    <strong> Definition: </strong>
-                    &lt;&lt; {{ definition.definition }} &gt;&gt;
-                  </p>
-                  <p v-if="definition.example">
-                    <strong> Example: </strong> „{{ definition.example }}”
-                  </p>
-                  <p v-if="definition.synonyms.length !== 0" class="ml-2">
-                    <strong> Synonyms: </strong>
-                    <router-link
-                      v-for="(synonym, idx) in definition.synonyms"
-                      :key="idx"
-                      :to="`/${synonym}`"
-                    >
-                      {{ (idx == 0 ? '' : ', ') + synonym }}
-                    </router-link>
-                  </p>
-                  <p v-if="definition.antonyms.length !== 0" class="ml-2">
-                    <strong> Antonyms: </strong>
-                    <router-link
-                      v-for="(antonym, idx) in definition.antonyms"
-                      :key="idx"
-                      :to="`/${antonym}`"
-                    >
-                      {{ (idx == 0 ? '' : ', ') + antonym }}
-                    </router-link>
-                  </p>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          <word-defnition :word="def" :idx="idx" />
         </li>
       </ul>
     </div>
@@ -70,6 +27,7 @@ import {
   FailureMessage,
   isFailureMessage,
 } from '@/utils/dictionary'
+import WordDefnition from '@/components/Word/WordDefnition.vue'
 
 export default defineComponent({
   name: 'Word',
@@ -99,10 +57,6 @@ export default defineComponent({
       this.dictionary = await fetchDictionary(word)
       this.isLoading = false
     },
-    play(url: string) {
-      const audio = new Audio(url)
-      audio.play()
-    },
     isWordArray(value: FailureMessage | Word[]): boolean {
       return isWordArray(value)
     },
@@ -112,6 +66,7 @@ export default defineComponent({
       this.isError = isFailureMessage(this.dictionary)
     },
   },
+  components: { WordDefnition },
 })
 </script>
 
