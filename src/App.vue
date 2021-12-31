@@ -1,11 +1,13 @@
 <template>
   <v-app id="main" :theme="theme">
-    <navbar />
-    <v-main>
-      <v-container>
-        <router-view />
-      </v-container>
-    </v-main>
+    <v-layout>
+      <navbar />
+      <v-main>
+        <v-container>
+          <router-view />
+        </v-container>
+      </v-main>
+    </v-layout>
   </v-app>
 </template>  
 

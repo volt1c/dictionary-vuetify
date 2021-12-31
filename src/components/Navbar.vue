@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app>
+  <v-app-bar absolute>
     <v-app-bar-title
       ><router-link to="/">Dictionary</router-link></v-app-bar-title
     >

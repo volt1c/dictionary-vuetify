@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-card class="px-6 py-3">
     <div v-if="isLoading">loading...</div>
     <div v-else-if="isError">
       <h1>{{ dictionary.title }} for ``{{ word }}``</h1>
@@ -8,6 +8,7 @@
     </div>
     <div v-else>
       <h1>{{ word }}</h1>
+      <v-divider></v-divider>
       <ul>
         <li v-for="(def, idx) in dictionary" :key="idx">
           <h2>
@@ -22,21 +23,32 @@
           <ul>
             <li v-for="(meaning, idx) in def.meanings" :key="idx">
               <ul>
-                <li
-                  type="1"
-                  v-for="(definition, idx) in meaning.definitions"
-                  :key="idx"
-                >
-                  <h4>&lt;&lt; {{ definition.definition }} &gt;&gt;</h4>
-                  <p>{{ definition.example }}</p>
-                  <p v-if="definition.synonyms.length !== 0">
-                    <strong> synonyms: </strong>
+                <li v-for="(definition, idx) in meaning.definitions" :key="idx">
+                  <p>
+                    <strong> Definition: </strong>
+                    &lt;&lt; {{ definition.definition }} &gt;&gt;
+                  </p>
+                  <p v-if="definition.example">
+                    <strong> Example: </strong> „{{ definition.example }}”
+                  </p>
+                  <p v-if="definition.synonyms.length !== 0" class="ml-2">
+                    <strong> Synonyms: </strong>
                     <router-link
                       v-for="(synonym, idx) in definition.synonyms"
                       :key="idx"
                       :to="`/${synonym}`"
                     >
                       {{ (idx == 0 ? '' : ', ') + synonym }}
+                    </router-link>
+                  </p>
+                  <p v-if="definition.antonyms.length !== 0" class="ml-2">
+                    <strong> Antonyms: </strong>
+                    <router-link
+                      v-for="(antonym, idx) in definition.antonyms"
+                      :key="idx"
+                      :to="`/${antonym}`"
+                    >
+                      {{ (idx == 0 ? '' : ', ') + antonym }}
                     </router-link>
                   </p>
                 </li>
@@ -46,7 +58,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -69,7 +81,7 @@ export default defineComponent({
       isError: boolean
     } = {
       dictionary: undefined,
-      isLoading: true,
+      isLoading: false,
       isError: false,
     }
     return data
@@ -102,3 +114,12 @@ export default defineComponent({
   },
 })
 </script>
+
+<style>
+ul {
+  list-style-type: none;
+}
+ul li {
+  margin: 0.5rem;
+}
+</style>
