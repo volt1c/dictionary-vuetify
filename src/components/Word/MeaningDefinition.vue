@@ -9,23 +9,21 @@
     </p>
     <p v-if="definition.synonyms.length !== 0" class="ml-2">
       <strong> Synonyms: </strong>
-      <router-link
-        v-for="(synonym, idx) in definition.synonyms"
-        :key="idx"
-        :to="`/${synonym}`"
-      >
-        {{ (idx == 0 ? '' : ', ') + synonym }}
-      </router-link>
+      <span v-for="(synonym, idx) in definition.synonyms" :key="idx">
+        {{ idx == 0 ? '' : ', ' }}
+        <router-link :to="`/${synonym}`">
+          {{ synonym }}
+        </router-link>
+      </span>
     </p>
     <p v-if="definition.antonyms.length !== 0" class="ml-2">
       <strong> Antonyms: </strong>
-      <router-link
-        v-for="(antonym, idx) in definition.antonyms"
-        :key="idx"
-        :to="`/${antonym}`"
-      >
-        {{ (idx == 0 ? '' : ', ') + antonym }}
-      </router-link>
+      <span v-for="(antonym, idx) in definition.antonyms" :key="idx">
+        {{ idx == 0 ? '' : ', ' }}
+        <router-link :to="`/${antonym}`">
+          {{ antonym }}
+        </router-link>
+      </span>
     </p>
   </div>
 </template>
