@@ -2,7 +2,7 @@
   <v-card class="px-6 py-3">
     <div v-if="isLoading">loading...</div>
     <div v-else-if="isError">
-      <h1>{{ dictionary.title }} for ``{{ word }}``</h1>
+      <h1>😥 {{ dictionary.title }} 😓</h1>
       <h4>{{ dictionary.message }}</h4>
       <p>{{ dictionary.resolution }}</p>
     </div>
