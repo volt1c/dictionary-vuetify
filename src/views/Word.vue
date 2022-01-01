@@ -2,7 +2,11 @@
   <v-card class="px-6 py-3">
     <div v-if="isLoading">loading...</div>
     <error-communicate v-else-if="isError" :message="dictionary" />
-    <word-communicate v-else :word="word" :dictionary="dictionary" />
+    <word-communicate
+      v-else
+      v-bind:word="word"
+      v-bind:dictionary="dictionary"
+    />
   </v-card>
 </template>
 
@@ -21,13 +25,12 @@ import WordCommunicate from '@/components/Word/WordCommunicate.vue'
 export default defineComponent({
   name: 'Word',
   data() {
-    const word = this.$route.params.word as string
     const data: {
       dictionary: any
       isLoading: boolean
       isError: boolean
     } = {
-      dictionary: undefined,
+      dictionary: [],
       isLoading: false,
       isError: false,
     }
@@ -53,6 +56,13 @@ export default defineComponent({
   watch: {
     dictionary() {
       this.isError = isFailureMessage(this.dictionary)
+    },
+    '$route.params.word': {
+      handler(word: string) {
+        this.loadDictionary(word)
+      },
+      immediate: true,
+      deep: true,
     },
   },
   components: { ErrorCommunicate, WordCommunicate },
