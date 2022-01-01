@@ -1,20 +1,8 @@
 <template>
   <v-card class="px-6 py-3">
     <div v-if="isLoading">loading...</div>
-    <div v-else-if="isError">
-      <h1>😥 {{ dictionary.title }} 😓</h1>
-      <h4>{{ dictionary.message }}</h4>
-      <p>{{ dictionary.resolution }}</p>
-    </div>
-    <div v-else>
-      <h1>{{ word }}</h1>
-      <v-divider></v-divider>
-      <ul>
-        <li v-for="(def, idx) in dictionary" :key="idx">
-          <word-defnition :word="def" :idx="idx" />
-        </li>
-      </ul>
-    </div>
+    <error-communicate v-else-if="isError" :message="dictionary" />
+    <word-communicate v-else :word="word" :dictionary="dictionary" />
   </v-card>
 </template>
 
@@ -27,7 +15,8 @@ import {
   FailureMessage,
   isFailureMessage,
 } from '@/utils/dictionary'
-import WordDefnition from '@/components/Word/WordDefnition.vue'
+import ErrorCommunicate from '@/components/Word/ErrorCommunicate.vue'
+import WordCommunicate from '@/components/Word/WordCommunicate.vue'
 
 export default defineComponent({
   name: 'Word',
@@ -66,7 +55,7 @@ export default defineComponent({
       this.isError = isFailureMessage(this.dictionary)
     },
   },
-  components: { WordDefnition },
+  components: { ErrorCommunicate, WordCommunicate },
 })
 </script>
 
