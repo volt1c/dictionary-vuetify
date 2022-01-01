@@ -2,14 +2,14 @@
   <v-text-field
     v-model="word"
     class="text-field-transparent"
-    @keydown.enter="$emit('search', word)"
+    @keydown.enter="search(word)"
     persistent-placeholder
     placeholder="Search"
     clearable
   ></v-text-field>
 
   <v-btn
-    @click="$emit('search', word)"
+    @click="search(word)"
     class="mr-4 ml-2"
     color="primary"
     variant="text"
@@ -19,15 +19,18 @@
 </template>
 
 <script lang="ts">
+import router from '@/routes'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'search-text-field',
-  emit: {
-    search: (word: string) => word,
-  },
   data: () => ({
     word: '',
   }),
+  methods: {
+    search(value: string) {
+      router.push(`/${value}`)
+    },
+  },
 })
 </script>

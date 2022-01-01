@@ -6,7 +6,7 @@
 
     <v-spacer></v-spacer>
 
-    <search-text-field @search="search" />
+    <search-text-field />
 
     <v-divider vertical />
 
@@ -25,11 +25,6 @@ export default defineComponent({
   data: () => ({
     word: '',
   }),
-  methods: {
-    search(value: string) {
-      router.push(`/${value}`)
-    },
-  },
   components: { ThemeButton, SearchTextField },
 })
 </script>
