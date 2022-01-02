@@ -39,7 +39,6 @@ export default defineComponent({
   computed: {
     word() {
       const word = this.$route.params.word
-      this.loadDictionary(word)
       return word
     },
   },
