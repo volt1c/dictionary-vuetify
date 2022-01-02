@@ -3,7 +3,7 @@
     <h1>{{ word }}</h1>
     <v-divider></v-divider>
     <ul>
-      <li v-for="(def, idx) in dictionary" :key="idx">
+      <li v-for="(def, idx) in words" :key="idx">
         <word-definition :word="def" :idx="idx" />
       </li>
     </ul>
@@ -21,7 +21,7 @@ export default defineComponent({
       required: true,
       type: String,
     },
-    dictionary: {
+    words: {
       required: true,
       type: Object as PropType<Array<Word>>,
     },
