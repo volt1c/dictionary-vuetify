@@ -56,7 +56,7 @@ export default defineComponent({
     '$route.params.word': {
       async handler(word: string) {
         this.isLoading = true
-        this.dictionary = await fetchDictionary(word)
+        this.response = await fetchDictionary(word)
         this.isLoading = false
       },
       immediate: true,
