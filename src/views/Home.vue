@@ -3,8 +3,8 @@
     <h1>Free Dictionary</h1>
     <v-divider horizontal class="mb-3" />
     <p>
-      This website is created with <strong> Vue 3 </strong> and
-      <strong> Vuetify 3 (Alpha) </strong>.
+      This website is created with <strong> Vue 3 </strong>,
+      <strong> Vuetify 3 (Alpha) </strong> and <strong> Vite </strong>.
     </p>
     <p>Works should be resumed after the official release of vuetify 3.</p>
     <h2 class="mt-3">Thanks</h2>
