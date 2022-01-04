@@ -1,5 +1,5 @@
 <template>
-  <v-card class="px-6 py-3">
+  <v-card class="px-6 py-3 word">
     <div v-if="isLoading">loading...</div>
     <error-communicate
       v-else-if="isFailureMessage(response)"
@@ -68,10 +68,10 @@ export default defineComponent({
 </script>
 
 <style>
-ul {
+.word ul {
   list-style-type: none;
 }
-ul li {
+.word ul li {
   margin: 0.5rem;
 }
 </style>
