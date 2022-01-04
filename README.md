@@ -1,6 +1,26 @@
-# Vue 3 + Vite
+# Dictionary vuetify
+![nodejs](https://img.shields.io/badge/Node.js-43953D?style=for-the-badge&logo=node.js&logoColor=white)
+![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![vue](https://img.shields.io/badge/Vue%203-34495e?style=for-the-badge&logo=vue.js&logoColor=41b883)
+![vuetify](https://img.shields.io/badge/Vuetify%203-3b79ff?style=for-the-badge&logo=vuetify&logoColor=white)
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+
+## Project Setup
+
+### Dev mode
+```
+$ npm run dev
+```
+
+### Build
+```
+$ npm run build
+```
+
+### Serve
+```
+$ npm run serve
+```
 
 ## Recommended IDE Setup
 
